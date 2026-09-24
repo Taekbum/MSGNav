@@ -19,7 +19,7 @@ from src.const import *
 mode = API_MODE
 
 gpt_client = OpenAI(
-    base_url=GPT_END_POINT,
+    # base_url=GPT_END_POINT,
     api_key=GPT_OPENAI_KEY,
 )
 qwen_client = OpenAI(
@@ -675,7 +675,7 @@ def get_prefiltering_objs(question, obj_infos, top_k=10, image_goal=None, use_ro
             message += f": image [{c[1][:10]}...]"
     
     response =  call_openai_api(prefiltering_sys, prefiltering_content)
-    logging.info(message)
+    # logging.info(message)
     logging.info(response)
     if response is None:
         return []
@@ -845,7 +845,7 @@ def explore_two_step(step, cfg, verbose=False):
             c[0] + (f"[{c[1][:10]}...]" if len(c) == 2 else "")
             for c in content
         )
-        logging.info(message)
+        # logging.info(message)
 
     # === Step 5: API query with retries ===
     retry_bound = 3
@@ -903,7 +903,7 @@ def explore_two_step(step, cfg, verbose=False):
                         c[0] + (f"[{c[1][:10]}...]" if len(c) == 2 else "")
                         for c in content
                     )
-                    logging.info(message)
+                    # logging.info(message)
 
                 raw_response = call_openai_api(sys_prompt, content)
                 response, reason = parse_response(raw_response)
@@ -963,7 +963,7 @@ def task_check(step, verbose=False):
             message += c[0]
             if len(c) == 2:
                 message += f"[{c[1][:10]}...]"
-        logging.info(message)
+        # logging.info(message)
 
     retry_bound = 3
     final_response = None

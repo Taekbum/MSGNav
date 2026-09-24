@@ -714,7 +714,7 @@ def get_prefiltering_objs(question, obj_infos, top_k=10, image_goal=None, use_ro
             message += f": image [{c[1][:10]}...]"
     
     response =  call_openai_api(prefiltering_sys, prefiltering_content)
-    logging.info(message)
+    # logging.info(message)
     logging.info(response)
     if response is None:
         return []
